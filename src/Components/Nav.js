@@ -5,10 +5,10 @@ const Nav = () => (
   <nav className="main-nav">
     <ul className="main-nav">
       {/*<li><NavLink exact to="/">Home</NavLink></li>*/}
-      <li><NavLink to="">Cats</NavLink></li>
-      <li><NavLink to="">Dogs</NavLink></li>
-      <li><NavLink to="">Computers</NavLink></li>
-    </ul>    
+      <li><NavLink to="/cats">Cats</NavLink></li>
+      <li><NavLink to="/dogs">Dogs</NavLink></li>
+      <li><NavLink to="/computers">Computers</NavLink></li>
+    </ul>  
   </nav>
 );
 
