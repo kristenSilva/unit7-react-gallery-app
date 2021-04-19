@@ -29,7 +29,7 @@ const PhotoContainer = (props) => {
 
   return(
     <div className="photo-container">
-        <h2>Title: {props.title}</h2>
+        <h2>Results: {props.title}</h2>
         <ul>
             {photos}
         </ul>

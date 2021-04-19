@@ -26,7 +26,7 @@ class App extends Component {
     this.performSearch('computers');
   }
 
-  performSearch = (tag = 'sunsets') => {
+  performSearch = (tag) => {
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tag}&per_page=15&format=json&nojsoncallback=1`)
     .then(res => res.json())
     .then(response => {
@@ -64,10 +64,11 @@ class App extends Component {
         <SearchForm onSearch={this.performSearch} tag={this.state.title}/>
         <Nav/>
         <Switch>
-          <Route exact path='/' render={ () => 
+          {/* <Route exact path='/' render={ () => 
             (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
               data={this.state.photos} title={this.state.title} onSearch={() => this.performSearch}/>} 
-          />
+          /> */}
+          <Route exact path='/' render= { () => <Redirect to="/cats"/>} />
           <Redirect from="/search/cats" to="/cats"/>
           <Route path='/cats' render={ () => 
             (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
