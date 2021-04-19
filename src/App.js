@@ -9,6 +9,10 @@ import SearchForm from './Components/SearchForm';
 import NotFound from './Components/NotFound';
 import NoMatch from './Components/NoMatch';
 
+/** App Class Component
+ * Initializes state with pre-loads of tags defined by navigation buttons
+ * Loads data when component is rendered
+ */
 class App extends Component {
   state = {
     photos: [],
@@ -19,6 +23,7 @@ class App extends Component {
     loading: true
   }
 
+  //data fetched when App is rendered
   componentDidMount() {
     this.performSearch();
     this.performSearch('cats');
@@ -26,6 +31,12 @@ class App extends Component {
     this.performSearch('computers');
   }
 
+  /** `performSearch`
+   * Data is fetched and parsed to JSON
+   * Conditional to serach for query that matches one of the pre-loaded data sets
+    * These matches are stored in corresponding `state` array
+   * @param {string} tag - query that user inputs in search 
+   */
   performSearch = (tag) => {
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tag}&per_page=15&format=json&nojsoncallback=1`)
     .then(res => res.json())
@@ -64,10 +75,6 @@ class App extends Component {
         <SearchForm onSearch={this.performSearch} tag={this.state.title}/>
         <Nav/>
         <Switch>
-          {/* <Route exact path='/' render={ () => 
-            (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
-              data={this.state.photos} title={this.state.title} onSearch={() => this.performSearch}/>} 
-          /> */}
           <Route exact path='/' render= { () => <Redirect to="/cats"/>} />
           <Redirect from="/search/cats" to="/cats"/>
           <Route path='/cats' render={ () => 

@@ -3,15 +3,17 @@ import { withRouter } from 'react-router-dom';
 import NotFound from './NotFound';
 import Photo from './Photo';
 
+/**
+ * Component displays all photos if results are avaiable otherwise `NotFound` component displayed
+ * First conditional is for browser navigation
+  * If the url in browser does not match the data displayed on page a new search is requested for 
+  * url query
+ * @param {*} props 
+ */
 const PhotoContainer = (props) => { 
 
   if(props.match.url.slice(8) !== props.title){
     props.onSearch(props.match.url.slice(8));
-  }
-
-  if(props.match.url === '/'){
-    props.onSearch('sunsets');
-    console.log('back to home');
   }
 
   const results = props.data;
