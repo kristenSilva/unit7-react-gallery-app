@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 /**
- * Component updates query to be searched when user types into search bar
-  * Update is handled by `state`
- * On submit, browser history is updated to reflect search path
+ * Component updates query to be searched when user types into search bar - update is handled by `state`
+ * On submit, browser history is updated to reflect search path and loading status is reset to `true`
  */
 class SearchForm extends Component {
   

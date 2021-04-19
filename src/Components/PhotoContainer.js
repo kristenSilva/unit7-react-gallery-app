@@ -1,14 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NoMatch from './NoMatch';
-import NotFound from './NotFound';
 import Photo from './Photo';
 
 /**
- * Component displays all photos if results are avaiable otherwise `NotFound` component displayed
+ * Component displays all photos if results are avaiable otherwise `NoMatch` component displayed
  * First conditional is for browser navigation
-  * If the url in browser does not match the data displayed on page a new search is requested for 
-  * url query
+  * If the url in browser does not match the data displayed on page a new search is requested for url query
  * @param {*} props 
  */
 const PhotoContainer = (props) => { 
@@ -28,7 +26,7 @@ const PhotoContainer = (props) => {
   return(
     <div className="photo-container">
       {(props.loading) ? <p>Loading...</p> : 
-        (results.length < 0 && !props.loading) ? <NoMatch/> :
+        (!results.length && !props.loading) ? <NoMatch/> :
         <div>
           <h2>Results: {props.title}</h2>
           <ul>{photos}</ul>

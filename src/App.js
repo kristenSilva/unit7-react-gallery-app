@@ -7,7 +7,6 @@ import Nav from './Components/Nav';
 import PhotoContainer from './Components/PhotoContainer';
 import SearchForm from './Components/SearchForm';
 import NotFound from './Components/NotFound';
-import NoMatch from './Components/NoMatch';
 
 /** App Class Component
  * Initializes state with pre-loads of tags defined by navigation buttons
