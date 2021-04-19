@@ -22,6 +22,7 @@ class SearchForm extends Component {
     this.props.history.push(path);
     this.props.onSearch(this.state.searchText);
     e.currentTarget.reset();
+    this.props.setLoading(true);
   }
   
   render() {  

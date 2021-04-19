@@ -69,32 +69,31 @@ class App extends Component {
     });
   }
 
+  handleLoading = (indicator) => {
+    this.setState({loading: indicator});
+  }
+ 
   render(){
     return(
       <BrowserRouter>
-        <SearchForm onSearch={this.performSearch} tag={this.state.title}/>
+        <SearchForm onSearch={this.performSearch} tag={this.state.title} setLoading={this.handleLoading}/>
         <Nav/>
         <Switch>
           <Route exact path='/' render= { () => <Redirect to="/cats"/>} />
           <Redirect from="/search/cats" to="/cats"/>
-          <Route path='/cats' render={ () => 
-            (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
-              data={this.state.cats} title='Cats' onSearch={() => this.performSearch}/>} 
+          <Route exact path='/cats' render={ () => <PhotoContainer 
+              data={this.state.cats} title='Cats' loading={this.state.loading} onSearch={() => this.performSearch}/>} 
           />
           <Redirect from="/search/dogs" to="/dogs"/>
-          <Route path='/dogs' render={ () => 
-            (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
-              data={this.state.dogs} title='Dogs' onSearch={() => this.performSearch}/>} 
+          <Route exact path='/dogs' render={ () => <PhotoContainer 
+              data={this.state.dogs} title='Dogs' loading={this.state.loading} onSearch={() => this.performSearch}/>} 
           />
           <Redirect from="/search/computers" to="/computers"/>
-          <Route path='/computers' render={ () => 
-            (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
-              data={this.state.computers} title='Computers' onSearch={() => this.performSearch}/>} 
+          <Route exact path='/computers' render={ () => <PhotoContainer 
+              data={this.state.computers} title='Computers' loading={this.state.loading} onSearch={() => this.performSearch}/>} 
           />
-          <Route exact path='/search/:tag' render={ () => 
-            (this.state.photos.length < 1) ? <NoMatch/>:
-            (this.state.loading) ? <p>Loading...</p> : <PhotoContainer 
-              data={this.state.photos} title={this.state.title} onSearch={this.performSearch}/>}
+          <Route exact path='/search/:tag' render={ () => <PhotoContainer 
+              data={this.state.photos} title={this.state.title} loading={this.state.loading} onSearch={this.performSearch}/>}
           />
           <Route component={NotFound} />
         </Switch>
