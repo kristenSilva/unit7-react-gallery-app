@@ -28,12 +28,11 @@ const PhotoContainer = (props) => {
   return(
     <div className="photo-container">
       {(props.loading) ? <p>Loading...</p> : 
-        (results.length > 0 && !props.loading) ?
+        (results.length < 0 && !props.loading) ? <NoMatch/> :
         <div>
           <h2>Results: {props.title}</h2>
           <ul>{photos}</ul>
-        </div> :
-        <NoMatch/>
+        </div>
       }
     </div> 
   );
